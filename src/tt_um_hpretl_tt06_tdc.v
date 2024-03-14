@@ -22,7 +22,7 @@ module tt_um_hpretl_tt06_tdc (
     input  wire       rst_n     // Async to clk
 );
 
-  localparam N_DELAY = 256;
+  localparam N_DELAY = 192;
 
   // All output pins must be assigned. If not used, assign to 0.
   assign uio_out[7:0] = 8'b0;
