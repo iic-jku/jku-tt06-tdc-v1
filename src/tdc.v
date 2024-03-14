@@ -57,39 +57,24 @@ module tdc #(parameter N_DELAY = 64) (
         for (i=0; i<=N_DELAY; i=i+1) begin : g_dly_chain_even
 `ifdef SIM
             assign w_dly_sig_n[i] = ~w_dly_sig[i];
-`else
-            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg (.A(w_dly_sig[i]),.Y(w_dly_sig_n[i]));
-`endif
-        end
-
-        for (i=0; i<=N_DELAY; i=i+1) begin : g_dly_chain_odd
-`ifdef SIM
             assign w_dly_sig[i+1] = ~w_dly_sig_n[i];
 `else
-            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg (.A(w_dly_sig_n[i]),.Y(w_dly_sig[i+1]));
+            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg1 (.A(w_dly_sig[i]),.Y(w_dly_sig_n[i]));
+            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg2 (.A(w_dly_sig_n[i]),.Y(w_dly_sig[i+1]));
 `endif
         end
 
 `ifdef __TDC_INTERLEAVED__
+`ifndef SIM
         // use an interlaved delay line to increase time resolution
 
        /* verilator lint_off MULTIDRIVEN */
         for (i=0; i<=(N_DELAY-1); i=i+1) begin : g_dly_chain_interleave
-`ifdef SIM
-            assign w_dly_sig[i+2] = ~w_dly_sig[i];
-`else
-            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg (.A(w_dly_sig[i]),.Y(w_dly_sig[i+2]));
-`endif
-        end
-
-        for (i=0; i<=(N_DELAY-2); i=i+1) begin : g_dly_chain_interleave_n
-`ifdef SIM
-            assign w_dly_sig_n[i+2] = ~w_dly_sig_n[i];
-`else
-            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg (.A(w_dly_sig_n[i]),.Y(w_dly_sig_n[i+2]));
-`endif
+            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg1 (.A(w_dly_sig[i]),.Y(w_dly_sig_n[i+1]));
+            (* keep = "true" *) sky130_fd_sc_hd__inv_2 dly_stg2 (.A(w_dly_sig_n[i]),.Y(w_dly_sig[i+2]));
         end
        /* verilator lint_on MULTIDRIVEN */
+`endif
 `endif
     endgenerate
 
