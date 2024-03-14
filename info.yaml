@@ -21,7 +21,7 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "Start signal of TDC"
+  ui[0]: "Start signal of TDC (stop signal is clk)"
   ui[1]: "n.u."
   ui[2]: "n.u."
   ui[3]: "n.u."

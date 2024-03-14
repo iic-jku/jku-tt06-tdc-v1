@@ -15,7 +15,9 @@ In the TT 1x1 block size a 128-stage interleaved delay can be fitted.
 
 ## How to test
 
-Apply to signals to `ui_in[0]` and `clk`. After capturing (rising edge of `clk`) the result (i.e. the time delay between rising edges of `ui_in[0]` and `clk`) can the be muxed-out to `uo_out[7:0]` using `ui_in[7:3]` as selector.
+Apply two signals to `ui_in[0]` and `clk`.
+
+After capturing (rising edge of `clk`) the result (i.e., the time delay between rising edge of `ui_in[0]` and `clk`) can be muxed-out to `uo_out[7:0]` using `ui_in[7:3]` as byte-wise selector. `ui_in[7:3]=0000` gives result byte 0, `ui_in[7:3]=0001` gives result byte 1, etc.
 
 ## External hardware
 
