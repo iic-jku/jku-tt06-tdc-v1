@@ -9,12 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a simple synthesized time-to-digital converter (TDC), consisting of a delay line and parallel capture FF. Depending on `__TDC_INTERLEAVED__` either a simple or an interleaved delay line is implemented.
+
+In the TT 1x1 block size a 128-stage interleaved delay can be fitted.
 
 ## How to test
 
-Explain how to use your project
+Apply to signals to `ui_in[0]` and `clk`. After capturing (rising edge of `clk`) the result (i.e. the time delay between rising edges of `ui_in[0]` and `clk`) can the be muxed-out to `uo_out[7:0]` using `ui_in[7:3]` as selector.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Two signal generators generating logical signals with a programmable delay.
