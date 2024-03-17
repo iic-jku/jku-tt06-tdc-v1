@@ -13,3 +13,4 @@ src/abc.history
 sim/abc.history
 sim/tdc.mag
 sim/tdc.pex.spice
+*.raw

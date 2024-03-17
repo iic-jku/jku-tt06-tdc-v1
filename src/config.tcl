@@ -72,7 +72,7 @@ set ::env(DECAP_CELL) "\
 
 # Clock
 set ::env(RUN_CTS) 1
-set ::env(CLOCK_PORT) {clk}
+set ::env(CLOCK_PORT) {i_stop}
 
 # Don't use power rings or met5 layer
 set ::env(DESIGN_IS_CORE) 0
