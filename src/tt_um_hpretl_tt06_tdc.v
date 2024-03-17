@@ -11,7 +11,7 @@
 `default_nettype none
 `include "../src/tdc.v"
 
-module tt_um_hpretl_tt06_tdc_v1 (
+module tt_um_hpretl_tt06_tdc (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -61,4 +61,4 @@ module tt_um_hpretl_tt06_tdc_v1 (
     .o_result(result)
   );
 
-endmodule // tt_um_hpretl_tt06_tdc_v1
+endmodule // tt_um_hpretl_tt06_tdc
